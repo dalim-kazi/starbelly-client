@@ -44,6 +44,35 @@
 .scroll-up {
   animation: scrollUp 3s ease-in-out infinite alternate;
 }
+@keyframes scrollUp2 {
+  0% {
+    transform: translateY(5px);
+    transform: translateX(0px);
+  }
+  10% {
+    transform: translateX(0);
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translate(-8px);
+  }
+  70% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateX(10px);
+    transform: translateY(-5px);
+  }
+}
+.scroll-up2 {
+  animation: scrollUp2 5s ease-in-out infinite alternate;
+}
 
 /*=================
         banner 
@@ -177,4 +206,7 @@
 
 .animate-zoom {
   animation: zoomInOut 10s ease-in-out infinite;
+}
+.animate-zoom2 {
+  animation: zoomInOut 1s ease-in-out infinite;
 }

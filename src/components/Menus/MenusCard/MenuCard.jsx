@@ -1,9 +1,8 @@
 import CommonButton from "@/components/common/commonButton/CommonButton";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
-import Head from "next/head";
 import Image from "next/image";
-
+import "@smastrom/react-rating/style.css";
 const MenuCard = ({ menu }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
