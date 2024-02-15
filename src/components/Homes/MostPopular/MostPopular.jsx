@@ -17,6 +17,7 @@ import MostPopular6 from "@/assets/mostPopular/9.jpg";
 import logo from "@/assets/icon/menu.svg";
 import Link from "next/link";
 import CommonButton from "@/components/common/commonButton/CommonButton";
+import CommonTitle from "@/components/common/CommonTitle/CommonTitle";
 
 const MostPopular = () => {
   // State to keep track of Swiper instance
@@ -66,20 +67,16 @@ const MostPopular = () => {
 
   return (
     <section className="container mt-32 mb-20">
-      <article className="w-full flex justify-between mb-10 px-2">
-        <div className="w-1/2 md:1/4">
-          <h1 className="text-2xl font-semibold leading-tight mb-5">
-            Most popular dishes
-          </h1>
-          <p className="text-[#6f6f87] ">
-            Consectetur numquam poro nemo veniam eligendi rem adipisci quo modi.
-          </p>
-        </div>
-        <Link href={""}>
-          <CommonButton>
-            <Image src={logo} alt="logo" className="mx-1 md:mx-3" /> Full Menu
-          </CommonButton>
-        </Link>
+      <article>
+        <CommonTitle
+          logo={logo}
+          title={"Most popular dishes"}
+          subTitle={
+            " Consectetur numquam poro nemo veniam eligendi rem adipisci quo modi."
+          }
+          link={""}
+          buttonName={"Full Menu"}
+        />
       </article>
       <article className="MostPopular-container relative mt-5 md:mt-10 mb-5 md:mb-10 mx-5">
         {/* Swiper component */}

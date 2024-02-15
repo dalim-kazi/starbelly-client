@@ -42,7 +42,7 @@
   }
 }
 .scroll-up {
-  animation: scrollUp 0.8s ease-in-out infinite alternate;
+  animation: scrollUp 3s ease-in-out infinite alternate;
 }
 
 /*=================

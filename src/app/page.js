@@ -1,4 +1,5 @@
 import Banner from "@/components/Homes/Banner/Banner";
+import CookMan from "@/components/Homes/CookMan/CookMan";
 import Experiences from "@/components/Homes/Experiences/Experiences";
 import FreeDelivery from "@/components/Homes/FreeDelivery/FreeDelivery";
 import MostPopular from "@/components/Homes/MostPopular/Mostpopular";
@@ -13,7 +14,8 @@ export default function Home() {
       <Experiences />
       <Today />
       <MostPopular />
-      <FreeDelivery/>
+      <CookMan/>
+      <FreeDelivery />
     </main>
   );
 }

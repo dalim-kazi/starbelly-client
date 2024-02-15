@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-200 top-0 z-10 fixed">
+    <div className="navbar bg-base-200 top-0 z-10 fixed py-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,17 +53,7 @@ const Navbar = () => {
             <a>Item 1</a>
           </li>
           <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
+             <Link href={"/menu"}>Menu</Link>
           </li>
           <li>
             <a>Item 3</a>

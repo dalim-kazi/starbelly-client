@@ -1,0 +1,11 @@
+.default-tab.react-tabs__tab--selected {
+  background-color: #f5c332;
+  color: black;
+  font-weight: 400; 
+  transition: all 0.9s ease-in-out; 
+}
+
+.blur {
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+}

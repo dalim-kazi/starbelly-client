@@ -40,7 +40,7 @@ const FreeDelivery = () => {
           </div>
         </div>
       </article>
-      <article className="w-full md:w-1/2">
+      <article className=" relative w-full md:w-1/2">
         <Image
           src={deliveryBanner}
           alt="deliveryBanner"
@@ -49,6 +49,9 @@ const FreeDelivery = () => {
           quality={100}
           className=""
         />
+        <div className="scroll-up absolute top-[60%] right-[55%] w-32 h-32 shadow-xl border-[30px] border-solid border-white rounded-full"></div>
+        <div className="scroll-up animate-zoom absolute top-[20%] right-[10%] w-10 h-10 bg-yellow-400 rounded-full shadow-xl"></div>
+        <div className="scroll-up absolute top-[90%] right-[25%] w-10 h-10 border-[10px] border-white rounded-full shadow-xl"></div>
       </article>
     </section>
   );

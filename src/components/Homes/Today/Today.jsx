@@ -2,32 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import logo from "@/assets/icon/arrow.svg";
 import logo1 from "@/assets/icon/1.png";
 import logo2 from "@/assets/icon/2.png";
 import logo3 from "@/assets/icon/3.png";
 import logo4 from "@/assets/icon/4.png";
 import CommonButton from "@/components/common/commonButton/CommonButton";
+import CommonTitle from "@/components/common/CommonTitle/CommonTitle";
 
 const Today = () => {
   return (
     <section className="container mb-10 px-2">
-      <article className="flex justify-between">
-        <div className="w-2/3 md:w-1/4">
-          <h1 className="text-2xl font-semibold leading-tight">
-            What do you like today?
-          </h1>
-          <p className="text-[#6f6f87] mt-5">
-            Consectetur numquam poro nemo veniam eligendi rem adipisci quo modi.
-          </p>
-        </div>
-        <div>
-          <Link href={""}>
-            <CommonButton>
-              <BsArrowUpRightCircle className="text-2xl md:mr-5" />
-              GO Shopping Now
-            </CommonButton>
-          </Link>
-        </div>
+      <article>
+        <CommonTitle
+          logo={logo}
+          title={" What do you like today?"}
+          subTitle={
+            "  Consectetur numquam poro nemo veniam eligendi rem adipisci quo modi."
+          }
+          buttonName={"  GO Shopping Now"}
+          link={""}
+        />
       </article>
       <ul className="grid grid-cols-1 w-full md:grid-cols-2 gap-10 justify-between mt-20">
         <li className="flex relative items-center gap-10 bg-base-200 p-8 hover:underline group">
