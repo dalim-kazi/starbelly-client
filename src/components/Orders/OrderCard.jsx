@@ -3,13 +3,14 @@ import React from "react";
 import CommonButton from "../common/commonButton/CommonButton";
 import logo from "@/assets/icon/arrow.svg";
 import cart from "@/assets/icon/cart.svg";
+import Link from "next/link";
 const OrderCard = ({ menu }) => {
   return (
     <section className="relative mb-10">
       <div>
         <Image
           src={menu?.image}
-          alt={menu?.title}
+          alt={menu?.name}
           width={300}
           height={200}
           layout="responsive"
@@ -25,9 +26,11 @@ const OrderCard = ({ menu }) => {
       <div className="absolute -bottom-5 left-0 right-0 flex items-center justify-between">
         <div>
           {" "}
-          <button className="bg-[#f9fafc] p-4 rounded-full ">
-            <Image src={logo} alt="logo" width={30} height={30} />
-          </button>
+          <Link href={`/order/${menu?._id}`}>
+            <button className="bg-[#f9fafc] p-4 rounded-full ">
+              <Image src={logo} alt="logo" width={30} height={30} />
+            </button>
+          </Link>
         </div>
         <CommonButton>
           <Image

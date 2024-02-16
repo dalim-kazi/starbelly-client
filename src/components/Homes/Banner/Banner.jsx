@@ -41,7 +41,7 @@ const Banner = () => {
           </Link>
         </div>
       </article>
-      <article className="sb-illustration-1-2 w-full mt-24 md:mt-48 lg:mt-52 xl:mt-0">
+      <article className="sb-illustration-1-2 w-full mt-24 md:mt-48  lg:mt-0">
         <Image
           className="sb-food-1 w-1/2"
           src={banner1}

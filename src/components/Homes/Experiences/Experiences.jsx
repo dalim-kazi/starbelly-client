@@ -7,7 +7,7 @@ const Experiences = () => {
   return (
     <section className="lg:flex items-center gap-20 container mb-10 lg:mb-52">
       <article className="w-1/2 relative">
-        <div className=" w-screen h-96 lg:w-[40rem] lg:h-[50rem] relative overflow-hidden">
+        <div className=" w-screen h-96 lg:w-[100%] xl:w-[80%] lg:h-[50rem] relative overflow-hidden">
           <Image
             src={interiorImage}
             alt="Interior"
