@@ -1,12 +1,14 @@
-import React from 'react';
+import FoodDetails from "@/components/FoodDetails/FoodDetails";
+import FoodDetailsCover from "@/components/FoodDetails/FoodDetailsCover";
+import React from "react";
 
-const FoodDetails = ({params}) => {
-   console.log(params)
-    return (
-        <div>
-            
-        </div>
-    );
+const FoodDetailsPage = ({ params }) => {
+  return (
+      <div className="xl:container mt-32 px-5">
+          <FoodDetailsCover/>
+      <FoodDetails foodId={params} />
+    </div>
+  );
 };
 
-export default FoodDetails;
+export default FoodDetailsPage;

@@ -6,8 +6,8 @@ const monoton = Monoton({ subsets: ["latin"], weight: "400" });
 const Experiences = () => {
   return (
     <section className="lg:flex items-center gap-20 container mb-10 lg:mb-52">
-      <article className="w-1/2 relative">
-        <div className=" w-screen h-96 lg:w-[100%] xl:w-[80%] lg:h-[50rem] relative overflow-hidden">
+      <article className="lg:w-1/2 relative">
+        <div className="h-96 md:w-[100%] lg:w-[100%] xl:w-[80%] lg:h-[50rem] relative overflow-hidden">
           <Image
             src={interiorImage}
             alt="Interior"
@@ -40,7 +40,7 @@ const Experiences = () => {
         <ul>
           <li className="flex items-start gap-10 mb-20">
             <p
-              className={`${monoton.className} text-4xl text-[#f3c027] leading-tight`}
+              className={`${monoton.className} text-4xl text-[#f3c847] leading-tight`}
             >
               01
             </p>

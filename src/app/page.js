@@ -5,16 +5,14 @@ import FreeDelivery from "@/components/Homes/FreeDelivery/FreeDelivery";
 import MostPopular from "@/components/Homes/MostPopular/Mostpopular";
 import Today from "@/components/Homes/Today/Today";
 
- 
-
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <Banner />
       <Experiences />
       <Today />
       <MostPopular />
-      <CookMan/>
+      <CookMan />
       <FreeDelivery />
     </main>
   );

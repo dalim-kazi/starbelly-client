@@ -46,7 +46,7 @@ const Today = () => {
               Voluptatem, minima.
             </p>
           </div>
-          <div className="absolute bottom-3 left-[3.2rem] group-hover:scale-110 transform-origin-center sm:hover:scale-105 md:group-hover:scale-110 lg:group-hover:scale-115 xl:group-hover:scale-120">
+          <div className="absolute z-0 bottom-3 left-[3.2rem] group-hover:scale-110 transform-origin-center sm:hover:scale-105 md:group-hover:scale-110 lg:group-hover:scale-115 xl:group-hover:scale-120">
             <div className="w-15 h-15 p-5 bg-yellow-400 rounded-full shadow-md animate-zoom-in-out"></div>
           </div>
         </li>
@@ -60,7 +60,7 @@ const Today = () => {
             style={{ objectFit: "cover" }}
             placeholder="blur"
             loading="lazy"
-            className="z-50 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
+            className="transition-transform z-10 duration-300 transform scale-100 group-hover:-translate-y-2"
           />
           <div>
             <h1 className="text-2xl text-blue-600 font-semibold leading-tight hover:underline">

@@ -80,7 +80,7 @@ const MenuCard = ({ menu }) => {
           <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
             <Image
               src={menu?.image}
-              alt={menu?.title}
+              alt={menu?.name}
               width={600}
               height={800}
               className="z-50 shadow-lg object-cover"
@@ -91,7 +91,7 @@ const MenuCard = ({ menu }) => {
           </div>
           <button
             onClick={handleOverlayClick}
-            className="absolute shadow-lg top-10 right-20  text-2xl bg-red-600 rounded-full text-white w-10 h-10 flex items-center justify-center"
+            className="absolute shadow-lg top-10 right-20  text-2xl bg-yellow-400 rounded-full text-white w-10 h-10 flex items-center justify-center"
           >
             X
           </button>

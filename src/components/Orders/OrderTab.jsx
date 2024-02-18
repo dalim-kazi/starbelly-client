@@ -1,24 +1,19 @@
 "use client";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import OrderTabItems from "./OrderTabItems";
- 
+import { useAllMenus } from "@/Hook/Usemenus";
+import Spinner from "../Spinner/Spinner";
+
 const OrderTab = () => {
-  const [menus, setMenus] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get("menu.json");
-      const result = res.data;
-      setMenus(result);
-    };
-    fetchData();
-  }, []);
-  const pizza = menus?.filter((item) => item.category === "pizza");
-  const soup = menus?.filter((item) => item.category === "soup");
-  const salad = menus?.filter((item) => item.category === "salad");
-  const dessert = menus?.filter((item) => item.category === "dessert");
-  const drinks = menus?.filter((item) => item.category === "drinks");
+  const { allMenus,isLoading } = useAllMenus();
+  const pizza = allMenus?.filter((item) => item.category === "pizza");
+  const soup = allMenus?.filter((item) => item.category === "soup");
+  const salad = allMenus?.filter((item) => item.category === "salad");
+  const dessert = allMenus?.filter((item) => item.category === "dessert");
+  const drinks = allMenus?.filter((item) => item.category === "drinks");
+  if (isLoading) {
+    return <Spinner/>
+  }
   return (
     <div className="container mt-10 px-2">
       <Tabs>
@@ -39,7 +34,7 @@ const OrderTab = () => {
             Drinks
           </Tab>
         </TabList>
-         {/* tab panel */}
+        {/* tab panel */}
         <TabPanel>
           <OrderTabItems menuItems={pizza} />
         </TabPanel>

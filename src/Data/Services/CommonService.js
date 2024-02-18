@@ -1,6 +1,7 @@
-const { default: axios } = require("axios");
-export const baseAPI = import.meta.env.VITE_BaseAPI;
+import axios from "axios";
 
+// base api
+export const baseAPI = process.env.BaseAPI;
 // get data
 export const getData = async (url, headers) => {
   try {
@@ -10,4 +11,3 @@ export const getData = async (url, headers) => {
     throw new Error(error);
   }
 };
-

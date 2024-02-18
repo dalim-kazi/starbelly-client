@@ -8,7 +8,7 @@ const Offered = () => {
   return (
     <section className="lg:flex justify-between gap-10 items-center mt-20">
       <article className=" relative w-full h-96 flex justify-between items-center bg-[#f9fafc] py-5">
-        <div className="px-8 z-50">
+        <div className="px-8 z-50 lg:z-0">
           <h1 className="text-5xl font-semibold leading-tight mb-2">- 50 %</h1>
           <h2 className="text-4xl font-semibold leading-tight mb-2 w-1/2">
             Discount for all* burgers!
@@ -40,7 +40,7 @@ const Offered = () => {
         <div className="scroll-up  absolute top-[60%] right-[10%] w-20 h-20 shadow-xl border-[20px] border-solid border-white rounded-full"></div>
       </article>
       <article className="relative w-full h-96 flex justify-between items-center bg-[#f9fafc] p-10">
-        <div className="z-50">
+        <div className="z-50 lg:z-0">
           <h1 className="text-3xl font-semibold leading-tight mb-2 w-1/2">
             Visit Starbelly and get your coffee*
           </h1>

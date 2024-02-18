@@ -5,7 +5,7 @@ import React from 'react';
 import './order.css'
 const Order = () => {
     return (
-        <div className='mt-48 mb-20'>
+        <div className='mt-28 lg:mt-48 mb-20'>
             <OrderCover />
              <OrderTab/>
         </div>

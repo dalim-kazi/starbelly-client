@@ -1,5 +1,6 @@
-const { allMenusAsyncGet } = require("@/Data/Action/Menus.Action/Menus.Action");
-const { createSlice } = require("@reduxjs/toolkit");
+import { allMenusAsyncGet } from "@/Data/Action/Menus.Action/Menus.Action";
+import { createSlice } from "@reduxjs/toolkit";
+
 
 const initialState = {
   allMenus: [],
