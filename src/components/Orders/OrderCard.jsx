@@ -1,13 +1,18 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import logo from "@/assets/icon/arrow.svg";
 import cart from "@/assets/icon/cart.svg";
 import Link from "next/link";
- 
+
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "@/Data/reducer/AddToCart/AddToCart.Reducer";
+import UseGetCart from "@/Hook/UseGetCart";
+import toast from "react-hot-toast";
 const OrderCard = ({ menu }) => {
   const dispatch = useDispatch();
+  const allCartItem = UseGetCart();
+
+  // add too cart
   const addToCard = async (item) => {
     const newFood = {
       _id: item?._id,
@@ -18,9 +23,12 @@ const OrderCard = ({ menu }) => {
       quantity: item?.quantity,
       recipe: item?.recipe,
     };
-    console.log(newFood);
     await dispatch(addItemToCart(newFood));
+    toast.success("Successfully added to cart");
   };
+  // already add
+  const existingItem = allCartItem?.filter((food) => food._id === menu._id);
+
   return (
     <section className="relative mb-10">
       <div>
@@ -48,22 +56,41 @@ const OrderCard = ({ menu }) => {
             </button>
           </Link>
         </div>
-        <button
-          onClick={() => addToCard(menu)}
-          className="flex opacity-100 border-none px-2 py-2 md:px-5 md:py-5 cursor-pointer transform scale-100 leading-normal text-blue-600 hover:underline underline-offset-2 font-semibold bg-yellow-400 transition duration-300 ease-in-out"
-        >
-          <Image
-            src={cart}
-            alt="cart"
-            width={20}
-            height={20}
-            quality={100}
-            className="object-cover mr-5"
-            loading="lazy"
-            style={{ objectFit: "cover" }}
-          />
-          Add To Cart
-        </button>
+        {existingItem.length > 0 ? (
+          <button
+            onClick={() => addToCard(menu)}
+            className={`flex opacity-100 border-none px-2 py-2 md:px-5 md:py-5 cursor-pointer transform scale-100 leading-normal text-blue-600 hover:underline underline-offset-2 font-semibold bg-[#f9fafc] hover:bg-[#ecedf0] transition duration-300 ease-in-out`}
+          >
+            <Image
+              src={cart}
+              alt="cart"
+              width={20}
+              height={20}
+              quality={100}
+              className="object-cover mr-5"
+              loading="lazy"
+              style={{ objectFit: "cover" }}
+            />
+            Add To Cart
+          </button>
+        ) : (
+          <button
+            onClick={() => addToCard(menu)}
+            className={`flex opacity-100 border-none px-2 py-2 md:px-5 md:py-5 cursor-pointer transform scale-100 leading-normal text-blue-600 hover:underline underline-offset-2 font-semibold bg-yellow-400 hover:bg-yellow-500 transition duration-300 ease-in-out`}
+          >
+            <Image
+              src={cart}
+              alt="cart"
+              width={20}
+              height={20}
+              quality={100}
+              className="object-cover mr-5"
+              loading="lazy"
+              style={{ objectFit: "cover" }}
+            />
+            added To Cart
+          </button>
+        )}
       </div>
     </section>
   );

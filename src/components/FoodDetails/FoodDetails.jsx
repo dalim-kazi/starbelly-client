@@ -9,10 +9,13 @@ import { Rating } from "@smastrom/react-rating";
 import cart from "@/assets/icon/cart.svg";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "@/Data/reducer/AddToCart/AddToCart.Reducer";
+import UseGetCart from "@/Hook/UseGetCart";
+import toast from "react-hot-toast";
 const monoton = Monoton({ subsets: ["latin"], weight: "400" });
 const FoodDetails = ({ foodId }) => {
   const dispatch = useDispatch();
   const { allMenus } = useAllMenus();
+  const allCartItem = UseGetCart();
   const [quantity, setQuantity] = useState(1);
 
   const incrementQuantity = () => {
@@ -26,22 +29,32 @@ const FoodDetails = ({ foodId }) => {
   };
 
   const addToCard = async (item) => {
-    const newFood = {
-      _id: item?._id,
-      category: item?.category,
-      name: item?.name,
-      image: item?.image,
-      price: item?.price,
-      quantity: quantity,
-      recipe: item?.recipe,
-    };
-    await dispatch(addItemToCart(newFood));
+    const existingItem = allCartItem?.filter(
+      (CartFoodId) => CartFoodId._id === item?._id
+    );
+    if (existingItem.length > 0) {
+       toast.success( 'already add to cart');
+      return
+    } else {
+      const newFood = {
+        _id: item?._id,
+        category: item?.category,
+        name: item?.name,
+        image: item?.image,
+        price: item?.price,
+        quantity: quantity,
+        recipe: item?.recipe,
+      };
+      await dispatch(addItemToCart(newFood));
+      toast.success("Successfully added to cart");
+    }
   };
-
   const singleFoodDetails = allMenus?.filter(
     (item) => item._id === foodId?.foodId
   );
-
+  const existingItem = allCartItem?.filter(
+    (CartFoodId) => CartFoodId._id === foodId?.foodId
+  );
   return (
     <section className="w-full px-2 xl:w-3/4 mx-auto mt-32 mb-32">
       {singleFoodDetails ? (
@@ -130,22 +143,42 @@ const FoodDetails = ({ foodId }) => {
                   </button>
                 </div>
                 <div>
-                  <button
-                    onClick={() => addToCard(item)}
-                    className="flex opacity-100 border-none px-2 py-2 md:px-5 md:py-5 cursor-pointer transform scale-100 leading-normal text-blue-600 hover:underline underline-offset-2 font-semibold bg-yellow-400 transition duration-300 ease-in-out"
-                  >
-                    <Image
-                      src={cart}
-                      alt="cart"
-                      width={20}
-                      height={20}
-                      quality={100}
-                      className="object-cover mr-5"
-                      loading="lazy"
-                      style={{ objectFit: "cover" }}
-                    />
-                    Add To Cart
-                  </button>
+                  {existingItem.length > 0 ? (
+                    <button
+                      onClick={() => addToCard(item)}
+                      disabled
+                      className={`flex opacity-100 border-none px-2 py-2 md:px-5 md:py-5 cursor-pointer transform scale-100 leading-normal text-blue-600 hover:underline underline-offset-2 font-semibold bg-[#f9fafc] hover:bg-[#ecedf0] transition duration-300 ease-in-out`}
+                    >
+                      <Image
+                        src={cart}
+                        alt="cart"
+                        width={20}
+                        height={20}
+                        quality={100}
+                        className="object-cover mr-5"
+                        loading="lazy"
+                        style={{ objectFit: "cover" }}
+                      />
+                      Added To Cart
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => addToCard(item)}
+                      className={`flex opacity-100 border-none px-2 py-2 md:px-5 md:py-5 cursor-pointer transform scale-100 leading-normal text-blue-600 hover:underline underline-offset-2 font-semibold bg-yellow-400 hover:bg-yellow-500 transition duration-300 ease-in-out`}
+                    >
+                      <Image
+                        src={cart}
+                        alt="cart"
+                        width={20}
+                        height={20}
+                        quality={100}
+                        className="object-cover mr-5"
+                        loading="lazy"
+                        style={{ objectFit: "cover" }}
+                      />
+                      added To Cart
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

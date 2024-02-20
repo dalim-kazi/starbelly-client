@@ -2,7 +2,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-
+import Image from "next/image";
+import logo from '@/assets/icon/logo.svg'
 const DynamicAddToCart = dynamic(() => import("../AddToCartPage/AddToCart"), {
   ssr: false,
 });
@@ -66,10 +67,10 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <Link href={"/"} className="text-xl"><Image src={logo} alt="logo" width={150} height={150}/></Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+        <div className="navbar-center hidden lg:flex gap-20">
+          <ul className="menu menu-horizontal px-1 text-[1rem]">
             <li>
               <Link href={"/"}>Home</Link>
             </li>

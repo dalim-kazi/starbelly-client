@@ -13,7 +13,7 @@ const DynamicDrawer = dynamic(() => import("../common/Drawer/Drawer"), {
 
 const AddToCart = ({ isOpen, openAddToCartOpen, onClose }) => {
   const allCartFood = UseGetCart();
-
+  const totalQuantity =allCartFood?.reduce((total,item)=>total + item.quantity,0)
   return (
     <div className="relative">
       <div className="relative">
@@ -24,7 +24,7 @@ const AddToCart = ({ isOpen, openAddToCartOpen, onClose }) => {
           <AiOutlineShopping className="text-2xl" />
         </button>
         <span className=" absolute top-1 bg-yellow-400 text-black font-semibold right-0 badge badge-sm indicator-item">
-          {allCartFood?.length}
+          {totalQuantity}
         </span>
       </div>
       <DynamicDrawer isOpen={isOpen} onClose={onClose}>
@@ -61,7 +61,9 @@ const AddToCart = ({ isOpen, openAddToCartOpen, onClose }) => {
               view order
             </button>
           </Link>
+          <Link href={"/checkout"}>
           <CommonButton>Checkout</CommonButton>
+          </Link>
         </div>
       </DynamicDrawer>
     </div>

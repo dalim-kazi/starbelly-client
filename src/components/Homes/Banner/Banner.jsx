@@ -22,7 +22,7 @@ const Banner = () => {
           modi.
         </p>
         <div className="flex justify-center lg:justify-start items-center gap-5">
-          <Link href={""}>
+          <Link href={"/menu"}>
             <CommonButton>
               <Image src={logo} alt="logo" className="mx-1 md:mx-3" />
               Our Menu
