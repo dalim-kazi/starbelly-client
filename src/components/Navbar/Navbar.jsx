@@ -18,6 +18,7 @@ const Navbar = () => {
   const [isAddToCartOpen, setAddToCartOpen] = useState(false);
   const router = useRouter();
   const { allUser } = useSelector((state) => state.auth);
+
   const openContact = () => {
     setContactOpen(true);
   };
@@ -34,10 +35,9 @@ const Navbar = () => {
     setAddToCartOpen(false);
   };
 
-  // logout
   const handleLogout = () => {
     localStorage.removeItem("persist:auth");
-    window.location.reload();
+    router.reload(); // Refresh the page after logout
     router.push("/");
   };
 
@@ -46,13 +46,19 @@ const Navbar = () => {
       <div className="navbar container">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+              aria-label="Toggle Menu"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -63,48 +69,56 @@ const Navbar = () => {
               </svg>
             </div>
             <ul
-              tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              role="menu"
             >
-              <li>
+              <li role="none">
                 <Link href={"/"}>Home</Link>
               </li>
-              <li>
+              <li role="none">
                 <Link href={"/menu"}>Menu</Link>
               </li>
-              <li>
+              <li role="none">
                 <Link href={"/order"}>Order</Link>
               </li>
-              <li>
-                <Link href={"/login"}>Login</Link>
+              <li role="none">
+                {allUser && allUser?.user ? (
+                  <button onClick={handleLogout} role="menuitem">
+                    Logout
+                  </button>
+                ) : (
+                  <Link href={"/login"}>Login</Link>
+                )}
               </li>
             </ul>
           </div>
-          <Link href={"/"} className="text-xl">
+          <Link href={"/"} className="text-xl" aria-label="Home">
             <Image
               src={logo}
-              alt="logo"
+              alt="Logo"
               width={150}
               height={150}
-              className=" object-cover"
+              className="object-cover"
               style={{ objectFit: "cover", width: "auto", height: "auto" }}
             />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex gap-20">
-          <ul className="menu menu-horizontal px-1 text-[1rem]">
-            <li>
+          <ul className="menu menu-horizontal px-1 text-[1rem]" role="menubar">
+            <li role="none">
               <Link href={"/"}>Home</Link>
             </li>
-            <li>
+            <li role="none">
               <Link href={"/menu"}>Menu</Link>
             </li>
-            <li>
+            <li role="none">
               <Link href={"/order"}>Order</Link>
             </li>
-            <li>
+            <li role="none">
               {allUser && allUser?.user ? (
-                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleLogout} role="menuitem">
+                  Logout
+                </button>
               ) : (
                 <Link href={"/login"}>Login</Link>
               )}

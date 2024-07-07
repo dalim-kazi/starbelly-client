@@ -1,16 +1,21 @@
-import Image from "next/image";
 import React from "react";
-import { Monoton } from "next/font/google";
+import Image from "next/image";
 import interiorImage from "@/assets/2.jpg";
+import { Monoton } from "next/font/google";
+
 const monoton = Monoton({ subsets: ["latin"], weight: "400" });
+
 const Experiences = () => {
   return (
-    <section className="lg:flex items-center gap-20 container mb-10 lg:mb-52">
+    <section
+      className="lg:flex items-center gap-20 container mb-10 lg:mb-52"
+      aria-labelledby="experiences-heading"
+    >
       <article className="lg:w-1/2 relative">
         <div className="h-96 md:w-[100%] lg:w-[100%] xl:w-[80%] lg:h-[50rem] relative overflow-hidden">
           <Image
             src={interiorImage}
-            alt="Interior"
+            alt="Interior of our establishment"
             className="w-full h-full absolute inset-0 object-cover animate-zoom"
             style={{ objectFit: "cover" }}
             quality={100}
@@ -19,28 +24,33 @@ const Experiences = () => {
           />
         </div>
         <div className="hidden lg:block">
-        <div className="absolute  w-64 h-64 bg-white -bottom-20 right-0 shadow-2xl flex justify-center items-center">
-          <div className="p-8 text-center border-4 border-[#f2f3f5] border-dashed">
-            <h1
-              className={`${monoton.className} text-[4.3rem] text-[#1c190f] leading-tight`}
-            >
-              17
-            </h1>
-            <h2 className="text-xl font-semibold">
-              Years <br /> Experience
-            </h2>
+          <div className="absolute w-64 h-64 bg-white -bottom-20 right-0 shadow-2xl flex justify-center items-center">
+            <div className="p-8 text-center border-4 border-[#f2f3f5] border-dashed">
+              <h1
+                className={`${monoton.className} text-[4.3rem] text-[#1c190f] leading-tight`}
+              >
+                17
+              </h1>
+              <h2 className="text-xl font-semibold">
+                Years <br /> Experience
+              </h2>
+            </div>
           </div>
-        </div>
         </div>
       </article>
       <article className="w-full lg:w-1/2 px-5 mt-5 lg:mt-0">
-        <h1 className="text-3xl font-semibold leading-tight mb-20">
+        <h1
+          id="experiences-heading"
+          className="text-3xl font-semibold leading-tight mb-20"
+        >
           We Offer Exceptional Experiences
         </h1>
         <ul>
           <li className="flex items-start gap-10 mb-20">
             <p
-              className={`${monoton.className} text-4xl text-[#f3c847] leading-tight`}
+              className={`${monoton.className} text-4xl leading-tight`}
+              style={{ color: "#333333" }} // Adjust text color for sufficient contrast
+              aria-label="Location Information" // Area label added for SEO
             >
               01
             </p>
@@ -56,7 +66,9 @@ const Experiences = () => {
           </li>
           <li className="flex items-start gap-10 mb-20">
             <p
-              className={`${monoton.className} text-4xl text-[#f3c027] leading-tight`}
+              className={`${monoton.className} text-4xl leading-tight`}
+              style={{ color: "#333333"}} // Adjust text color for sufficient contrast
+              aria-label="Fast Delivery Information" // Area label added for SEO
             >
               02
             </p>
@@ -72,7 +84,9 @@ const Experiences = () => {
           </li>
           <li className="flex items-start gap-10 mb-20">
             <p
-              className={`${monoton.className} text-4xl text-[#f3c027] leading-tight`}
+              className={`${monoton.className} text-4xl leading-tight`}
+              style={{ color: "#333333" }} // Adjust text color for sufficient contrast
+              aria-label="Quality Service Information" // Area label added for SEO
             >
               03
             </p>

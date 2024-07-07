@@ -1,4 +1,3 @@
-// Import necessary libraries and components
 "use client";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,15 +14,12 @@ import MostPopular4 from "@/assets/mostPopular/4.jpg";
 import MostPopular5 from "@/assets/mostPopular/5.jpg";
 import MostPopular6 from "@/assets/mostPopular/9.jpg";
 import logo from "@/assets/icon/menu.svg";
-import Link from "next/link";
 import CommonButton from "@/components/common/commonButton/CommonButton";
 import CommonTitle from "@/components/common/CommonTitle/CommonTitle";
 
 const MostPopular = () => {
-  // State to keep track of Swiper instance
   const [swiperRef, setSwiperRef] = useState(null);
 
-  // Array of Most Popular Images with titles and prices
   const MostPopularImages = [
     {
       image: MostPopular1,
@@ -57,7 +53,6 @@ const MostPopular = () => {
     },
   ];
 
-  // Pagination configuration for Swiper
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -66,20 +61,20 @@ const MostPopular = () => {
   };
 
   return (
-    <section className="container mt-32 mb-20">
+    <section
+      className="container mt-32 mb-20"
+      aria-labelledby="most-popular-heading"
+    >
       <article>
         <CommonTitle
           logo={logo}
-          title={"Most popular dishes"}
-          subTitle={
-            " Consectetur numquam poro nemo veniam eligendi rem adipisci quo modi."
-          }
-          link={""}
-          buttonName={"Full Menu"}
+          title="Most popular dishes"
+          subTitle="Consectetur numquam poro nemo veniam eligendi rem adipisci quo modi."
+          link="/menu"
+          buttonName="Full Menu"
         />
       </article>
       <article className="MostPopular-container relative mt-5 md:mt-10 mb-5 md:mb-10 mx-5">
-        {/* Swiper component */}
         <Swiper
           onSwiper={setSwiperRef}
           slidesPerView={5}
@@ -108,28 +103,27 @@ const MostPopular = () => {
             },
           }}
         >
-          {/* Swiper slides */}
           {MostPopularImages.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="image-container">
                 <Image
                   src={item.image}
-                  alt={`MostPopular ${index + 1}`}
+                  alt={item.title}
                   width={400}
                   height={250}
                   quality={100}
-                  style={{
-                    objectFit: "cover",
-                  }}
+                  style={{ objectFit: "cover" }}
                   placeholder="blur"
                   loading="lazy"
                 />
               </div>
               <div className="flex justify-between">
-                <h1 className="py-5 text-md lg:text-xl font-semibold">
+                <h2 className="py-5 text-md lg:text-xl font-semibold">
                   {item.title}
-                </h1>
-                <CommonButton>${item.price}</CommonButton>
+                </h2>
+                <CommonButton aria-label={`Price of ${item.title}`}>
+                  {item.price}
+                </CommonButton>
               </div>
             </SwiperSlide>
           ))}
