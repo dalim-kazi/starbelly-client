@@ -37,7 +37,9 @@ const OrderCard = ({ menu }) => {
           alt={menu?.name}
           width={300}
           height={200}
-          layout="responsive"
+          loading="lazy"
+          style={{ objectFit: "cover" }}
+          quality={100}
           className="w-full h-48 object-cover rounded"
         />
       </div>
@@ -66,7 +68,6 @@ const OrderCard = ({ menu }) => {
               alt="cart"
               width={20}
               height={20}
-              quality={100}
               className="object-cover mr-5"
               loading="lazy"
               style={{ objectFit: "cover" }}

@@ -1,17 +1,29 @@
 "use client";
+import UseGetCart from "@/Hook/UseGetCart";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 const UserInfo = () => {
+  const allCartItem = UseGetCart();
+  const { allUser } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const orderInfo = {
+      name: data?.name,
+      email: data?.email,
+      address: data?.address,
+      phoneNumber: data?.phone,
+      city: data?.city,
+      postCode: data?.postCode,
+      orderDetails: data?.orderDetails,
+    };
+    console.log(orderInfo);
   };
   return (
     <section className="w-full lg:shadow-md p-10  lg:border-t-4 rounded-md border-[#f5c332] lg:max-h-[650px]">
@@ -21,6 +33,7 @@ const UserInfo = () => {
           <div>
             <input
               type="text"
+              value={allUser?.user?.name}
               placeholder="Enter Your Name"
               className="w-full focus:outline-none border-b-2 border-[#f5c332] bg-[#f9fafc] p-3 text-md"
               {...register("name", { required: true })}
@@ -32,6 +45,7 @@ const UserInfo = () => {
           <div>
             <input
               type="text"
+              value={allUser?.user?.phoneNumber}
               placeholder="Phone Number"
               className="w-full focus:outline-none border-b-2 border-[#f5c332] bg-[#f9fafc] p-3 text-lg"
               {...register("phone", { required: true })}
@@ -43,6 +57,7 @@ const UserInfo = () => {
           <div>
             <input
               type="email"
+              value={allUser?.user?.email}
               placeholder="Email"
               className="w-full focus:outline-none border-b-2 border-[#f5c332] bg-[#f9fafc] p-3 text-lg"
               {...register("email", { required: true })}
@@ -76,6 +91,7 @@ const UserInfo = () => {
           <div>
             <input
               type="text"
+              value={allUser?.user?.address}
               placeholder="Address"
               className="w-full focus:outline-none border-b-2 border-[#f5c332] bg-[#f9fafc] p-3 text-lg"
               {...register("address", { required: true })}

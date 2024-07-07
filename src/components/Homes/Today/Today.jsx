@@ -35,7 +35,7 @@ const Today = () => {
             placeholder="blur"
             loading="lazy"
             quality={100}
-            className="z-50 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
+            className="z-40 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
           />
           <div>
             <h1 className="text-2xl text-blue-600 font-semibold leading-tight hover:underline">
@@ -86,7 +86,7 @@ const Today = () => {
             style={{ objectFit: "cover" }}
             placeholder="blur"
             loading="lazy"
-            className="z-50 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
+            className="z-40 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
           />
           <div>
             <h1 className="text-2xl text-blue-600 font-semibold leading-tight hover:underline">
@@ -112,7 +112,7 @@ const Today = () => {
             style={{ objectFit: "cover" }}
             placeholder="blur"
             loading="lazy"
-            className="z-50 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
+            className="z-40 transition-transform duration-300 transform scale-100 group-hover:-translate-y-2"
           />
           <div>
             <h1 className="text-2xl text-blue-600 font-semibold leading-tight hover:underline">

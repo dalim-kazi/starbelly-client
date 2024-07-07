@@ -1,9 +1,11 @@
-"use client"
+"use client";
 import Link from "next/link";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import logo from '@/assets/icon/logo.svg'
+import logo from "@/assets/icon/logo.svg";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 const DynamicAddToCart = dynamic(() => import("../AddToCartPage/AddToCart"), {
   ssr: false,
 });
@@ -14,7 +16,8 @@ const DynamicContact = dynamic(() => import("../Contact/Contact"), {
 const Navbar = () => {
   const [isContactOpen, setContactOpen] = useState(false);
   const [isAddToCartOpen, setAddToCartOpen] = useState(false);
-
+  const router = useRouter();
+  const { allUser } = useSelector((state) => state.auth);
   const openContact = () => {
     setContactOpen(true);
   };
@@ -31,8 +34,15 @@ const Navbar = () => {
     setAddToCartOpen(false);
   };
 
+  // logout
+  const handleLogout = () => {
+    localStorage.removeItem("persist:auth");
+    window.location.reload();
+    router.push("/");
+  };
+
   return (
-    <section className="bg-base-200 top-0 z-10 fixed py-2 w-full">
+    <section className="bg-base-200 top-0 z-50 fixed py-2 w-full">
       <div className="navbar container">
         <div className="navbar-start">
           <div className="dropdown">
@@ -65,9 +75,21 @@ const Navbar = () => {
               <li>
                 <Link href={"/order"}>Order</Link>
               </li>
+              <li>
+                <Link href={"/login"}>Login</Link>
+              </li>
             </ul>
           </div>
-          <Link href={"/"} className="text-xl"><Image src={logo} alt="logo" width={150} height={150}/></Link>
+          <Link href={"/"} className="text-xl">
+            <Image
+              src={logo}
+              alt="logo"
+              width={150}
+              height={150}
+              className=" object-cover"
+              style={{ objectFit: "cover", width: "auto", height: "auto" }}
+            />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex gap-20">
           <ul className="menu menu-horizontal px-1 text-[1rem]">
@@ -79,6 +101,13 @@ const Navbar = () => {
             </li>
             <li>
               <Link href={"/order"}>Order</Link>
+            </li>
+            <li>
+              {allUser && allUser?.user ? (
+                <button onClick={handleLogout}>Logout</button>
+              ) : (
+                <Link href={"/login"}>Login</Link>
+              )}
             </li>
           </ul>
         </div>

@@ -84,7 +84,7 @@ const MenuCard = ({ menu }) => {
               width={600}
               height={800}
               className="z-50 shadow-lg object-cover"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", width: "auto", height: "auto" }}
               quality={100}
               loading="lazy"
             />
